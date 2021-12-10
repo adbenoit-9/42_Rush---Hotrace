@@ -1,1 +1,1 @@
-# 42_Rush---Hotrace
+# Rush - Hotrace
