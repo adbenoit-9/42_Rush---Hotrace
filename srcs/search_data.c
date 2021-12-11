@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   search_data.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 14:30:18 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 19:26:21 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/11 20:27:13 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ Returns NULL if the key is not found. */
 char	*search(const char *key, t_data **data, size_t size)
 {
 	size_t	index;
-	// size_t	begin;
 	size_t	code;
 	t_data	*it;
 
@@ -25,15 +24,11 @@ char	*search(const char *key, t_data **data, size_t size)
 		return (NULL);
 	code = hash_code(key);
 	index = code % size;
-	// begin = index;
 	it = data[index];
 	while (it && ft_strcmp(it->key, key) != 0)
 	{
 		++code;
-		// index = code % size;
 		it = it->next;
-		// if (index == begin)
-		// 	return (NULL);
 	}
 	if (!it)
 		return (NULL);

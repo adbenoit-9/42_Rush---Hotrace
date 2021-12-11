@@ -6,7 +6,7 @@
 /*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:58:51 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 19:11:31 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/12/11 20:15:46 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,32 @@ int	ft_strcmp(const char *s1, const char *s2)
 		i++;
 	}
 	return (s1[i] - s2[i]);
+}
+
+t_data	*ft_lstlast(t_data *lst)
+{
+	if (lst == NULL)
+		return (NULL);
+	while (lst)
+	{
+		if (lst->next == NULL)
+			return (lst);
+		lst = lst->next;
+	}
+	return (lst);
+}
+
+void	ft_lstadd_back(t_data **alst, t_data *new)
+{
+	t_data	*temp;
+
+	if (*alst)
+	{
+		temp = ft_lstlast(*alst);
+		temp->next = new;
+	}
+	else
+		*alst = new;
 }
 
 static char	*trim_enter(char *str)
