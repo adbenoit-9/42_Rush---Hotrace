@@ -6,7 +6,7 @@
 /*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:36:16 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 19:02:57 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/12/11 20:02:46 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_data
 	struct s_data	*next;
 }				t_data;
 
-t_data	*store_data(t_data *begin, char *line, size_t *size);
+t_data	*store_data(t_data *last, char *line, size_t *size);
 char	*search(const char *key, t_data **data, size_t size);
 size_t	hash_code(const char *key);
 t_data	**hash_data(t_data *data, size_t size);
