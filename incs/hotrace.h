@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hotrace.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:36:16 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 15:54:32 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:17:49 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ size_t  hash_code(const char *key);
 t_data  **hash_data(t_data *data, size_t size);
 void	ft_lstadd_front(t_data **alst, t_data *new);
 void	clear_data(t_data *begin);
+char	*get_next_line_trim(int fd);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   store_data.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 14:32:34 by pleveque          #+#    #+#             */
-/*   Updated: 2021/12/11 15:52:55 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:14:09 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,8 @@ static t_data	*ft_lstempty()
 t_data	*store_data(t_data *begin, char *line, size_t *size)
 {
 	t_data	*new;
-	int		line_size;
 
 	*size += 1;
-	line_size = ft_strlen(line) - 1;
-	if (line[line_size] == '\n')
-		line[line_size] = '\0';
 	if (begin && begin->key && !begin->value)
 	{
 		begin->value = line;
