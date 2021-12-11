@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   store_data.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 14:32:34 by pleveque          #+#    #+#             */
-/*   Updated: 2021/12/11 16:59:20 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/11 19:23:41 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,21 @@ static t_data	*ft_lstempty(void)
 t_data	*store_data(t_data *begin, char *line, size_t *size)
 {
 	t_data	*new;
+	t_data	*last;
 
-	if (begin && begin->key && !begin->value)
+	last = ft_lstlast(begin);
+	if (last && last->key && !last->value)
 	{
-		begin->value = line;
+		last->value = line;
 		return (begin);
 	}
 	new = ft_lstempty();
 	if (!new)
 		return (NULL);
 	new->key = line;
-	*size += 1;
-	if (begin == NULL)
+	++(*size);
+	if (!begin)
 		return (new);
-	ft_lstadd_front(&begin, new);
+	ft_lstadd_back(&last, new);
 	return (begin);
 }

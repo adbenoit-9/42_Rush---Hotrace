@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hotrace.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:36:16 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 17:18:49 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/11 19:02:57 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ void	clear_data(t_data *begin);
 int		ft_strcmp(const char *s1, const char *s2);
 void	ft_lstadd_front(t_data **alst, t_data *new);
 char	*get_next_line_trim(int fd);
+void	ft_lstadd_back(t_data **alst, t_data *new);
+t_data	*ft_lstlast(t_data *lst);
 
 #endif
