@@ -6,7 +6,7 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 14:41:25 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 17:01:57 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/11 17:16:57 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ size_t	hash_code(const char *key)
 	return (code);
 }
 
-size_t	hash_index(t_data **data, size_t code, size_t size)
+static size_t	hash_index(t_data **data, size_t code, size_t size)
 {
 	size_t	index;
 
