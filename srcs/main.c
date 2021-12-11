@@ -6,7 +6,7 @@
 /*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:41:57 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 16:07:35 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/12/11 18:59:26 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ int main(void)
             hash_tab = hash_data(data, size);
             printf("data hashed\n");
             state = RESEARCH;
+						if (!ft_lstlast(data)->value)
+						{
+							printf("you cant have empty value");
+							return (0);
+						}
         }
         if (state == STOREDATA)
            data = store_data(data, line, &size);

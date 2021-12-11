@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+         #
+#    By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/11 14:09:00 by adbenoit          #+#    #+#              #
-#    Updated: 2021/12/11 15:54:17 by adbenoit         ###   ########.fr        #
+#    Updated: 2021/12/11 19:00:48 by pleveque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,9 @@ SRC				:= main.c \
 				   search.c \
 				   store_data.c \
 				   ft_lstadd_front.c \
-				   clear_data.c
+				   clear_data.c \
+					 ft_lstlast.c \
+					 ft_lstadd_back.c \
 
 OBJ				:= $(SRC:%.c=$(OBJ_DIR)/%.o)
 
