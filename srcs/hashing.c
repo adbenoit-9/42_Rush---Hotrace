@@ -6,7 +6,7 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 14:41:25 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 15:32:56 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:02:55 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ size_t  hash_index(t_data **data, size_t code, size_t size)
     {
         ++code;
         index = code % size;
+        
     }
     printf("\033[34mindex: %zu\033[0m\n", index);
     return (index);
@@ -61,7 +62,10 @@ t_data  **hash_data(t_data *data, size_t size)
         return (NULL);
     i = 0;
     while (i < size)
+    {
         hash_data[i] = 0;
+        ++i;
+    }
     while (data)
     {
         code = hash_code(data->key);

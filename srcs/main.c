@@ -6,7 +6,7 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:41:57 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 15:58:27 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:00:24 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int main(void)
         {
             printf("\033[31mend of storage\033[0m\n\n");
             hash_tab = hash_data(data, size);
+            printf("data hashed\n");
             state = RESEARCH;
         }
         if (state == STOREDATA)
