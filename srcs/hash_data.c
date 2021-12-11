@@ -6,7 +6,7 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 14:41:25 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 17:26:58 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/11 18:57:27 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,24 @@ size_t	hash_code(const char *key)
 }
 
 /* Chooses an available index in the data table according to the code. */
-static size_t	hash_index(t_data **data, size_t code, size_t size)
-{
-	size_t	index;
+// static size_t	hash_index(t_data **data, size_t code, size_t size)
+// {
+// 	size_t	index;
 
-	index = code % size;
-	while (data[index])
-	{
-		++code;
-		index = code % size;
-	}
-	return (index);
-}
+// 	index = code % size;
+// 	while (data[index])
+// 	{
+// 		++code;
+// 		index = code % size;
+// 	}
+// 	return (index);
+// }
 
 /* Puts the data in an array. */
 t_data	**hash_data(t_data *data, size_t size)
 {
 	t_data	**hash_data;
+	t_data	*curr_data;
 	size_t	code;
 	size_t	index;
 	size_t	i;
@@ -68,10 +69,16 @@ t_data	**hash_data(t_data *data, size_t size)
 	}
 	while (data)
 	{
-		code = hash_code(data->key);
-		index = hash_index(hash_data, code, size);
-		hash_data[index] = data;
+		curr_data = data;
 		data = data->next;
+		curr_data->next = NULL;
+		code = hash_code(curr_data->key);
+		// index = hash_index(hash_data, code, size);
+		index = code % size;
+		if (hash_data[index])
+			ft_lstadd_back(&hash_data[index], curr_data);
+		else
+			hash_data[index] = curr_data;
 	}
 	return (hash_data);
 }

@@ -6,7 +6,7 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 14:30:18 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 17:28:52 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/11 19:26:21 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,25 @@ Returns NULL if the key is not found. */
 char	*search(const char *key, t_data **data, size_t size)
 {
 	size_t	index;
-	size_t	begin;
+	// size_t	begin;
 	size_t	code;
+	t_data	*it;
 
 	if (size == 0)
 		return (NULL);
 	code = hash_code(key);
 	index = code % size;
-	begin = index;
-	while (ft_strcmp(data[index]->key, key) != 0)
+	// begin = index;
+	it = data[index];
+	while (it && ft_strcmp(it->key, key) != 0)
 	{
 		++code;
-		index = code % size;
-		if (index == begin)
-			return (NULL);
+		// index = code % size;
+		it = it->next;
+		// if (index == begin)
+		// 	return (NULL);
 	}
+	if (!it)
+		return (NULL);
 	return (data[index]->value);
 }
