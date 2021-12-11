@@ -6,12 +6,14 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 14:30:18 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 17:01:58 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/11 17:28:52 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hotrace.h"
 
+/* Returns the value corresponding to the key.
+Returns NULL if the key is not found. */
 char	*search(const char *key, t_data **data, size_t size)
 {
 	size_t	index;

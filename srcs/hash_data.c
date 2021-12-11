@@ -6,12 +6,13 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 14:41:25 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 17:16:57 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/11 17:26:58 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hotrace.h"
 
+/* Calculates the hash of a string: polynomial rolling hash function. */
 size_t	hash_code(const char *key)
 {
 	size_t	code;
@@ -34,6 +35,7 @@ size_t	hash_code(const char *key)
 	return (code);
 }
 
+/* Chooses an available index in the data table according to the code. */
 static size_t	hash_index(t_data **data, size_t code, size_t size)
 {
 	size_t	index;
@@ -47,6 +49,7 @@ static size_t	hash_index(t_data **data, size_t code, size_t size)
 	return (index);
 }
 
+/* Puts the data in an array. */
 t_data	**hash_data(t_data *data, size_t size)
 {
 	t_data	**hash_data;
