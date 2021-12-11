@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:58:51 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 14:52:10 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:59:51 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,33 @@ int	ft_strcmp(const char *s1, const char *s2)
 		i++;
 	}
 	return (s1[i] - s2[i]);
+}
+
+void	ft_lstadd_front(t_data **alst, t_data *new)
+{
+	if (!new || !alst)
+		return ;
+	new->next = *alst;
+	*alst = new;
+	return ;
+}
+
+static char	*trim_enter(char *str)
+{
+	int	size;
+
+	size = ft_strlen(str) - 1;
+	if (str[size] == '\n')
+		str[size] = '\0';
+	return (str);
+}
+
+char	*get_next_line_trim(int fd)
+{
+	char	*res;
+
+	res = get_next_line(fd);
+	if (res)
+		res = trim_enter(res);
+	return (res);
 }

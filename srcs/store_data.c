@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   store_data.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 14:32:34 by pleveque          #+#    #+#             */
-/*   Updated: 2021/12/11 16:29:08 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:59:20 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/hotrace.h"
 
-static t_data	*ft_lstempty()
+static t_data	*ft_lstempty(void)
 {
-	t_data *res;
+	t_data	*res;
 
 	res = malloc(sizeof(t_data));
 	if (!res)

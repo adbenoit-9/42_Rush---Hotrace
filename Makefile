@@ -6,7 +6,7 @@
 #    By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/11 14:09:00 by adbenoit          #+#    #+#              #
-#    Updated: 2021/12/11 16:46:20 by adbenoit         ###   ########.fr        #
+#    Updated: 2021/12/11 17:01:43 by adbenoit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,12 +28,10 @@ NAME			:= hotrace
 SRC				:= main.c \
 				   utils.c \
 				   get_next_line.c \
-				   get_next_line_trim.c \
 				   get_next_line_utils.c \
-				   hashing.c \
-				   search.c \
+				   hash_data.c \
+				   search_data.c \
 				   store_data.c \
-				   ft_lstadd_front.c \
 				   clear_data.c
 
 OBJ				:= $(SRC:%.c=$(OBJ_DIR)/%.o)
@@ -49,13 +47,14 @@ B_CYAN 			= \033[1;36m
 
 
 # MAKEFILE
+all: $(NAME)
+
 $(NAME): $(OBJ)
 	@printf "$(CL_LINE)"
 	@echo "[1 / 1] - $(B_MAGENTA)$@$(NONE)"
 	@$(CC) $(CFLAGS) $(OBJ) -o $@
 	@echo "$(B_GREEN)Compilation done !$(NONE)"
 
-all: $(NAME)
 
 clean:
 	@rm -Rf $(BUILD)

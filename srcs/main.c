@@ -6,53 +6,54 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:41:57 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 16:39:16 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:57:21 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/hotrace.h"
 
-int main(void)
+static void	do_research(const char *key, t_data **hash_tab, size_t size)
 {
-    char    *line;
-    char    *value;
-    int     state;
-    t_data  *data;
-    t_data  **hash_tab;
-    size_t  size;
+	char	*value;
 
-    state = STOREDATA;
-    data = NULL;
-    hash_tab = NULL;
-    size = 0;
-    while ((line = get_next_line_trim(STDIN_FILENO)))
-    {
-        if (state == STOREDATA && ft_strcmp(line, "") == 0)
-        {
-            printf("\033[31mend of storage - %zu items\033[0m\n", size);
-            hash_tab = hash_data(data, size);
-            // printf("\033[32mdata hashed\033[0m\n\n");
-            state = RESEARCH;
-        }
-        else if (state == STOREDATA)
-           data = store_data(data, line, &size);
-        else
-        {
-            // printf("search |%s|\n", line);
-            value = search(line, hash_tab, size);
-            if (value)
-            {
-                write(STDOUT_FILENO, value, ft_strlen(value));
-                write(STDOUT_FILENO, "\n", 1);
-            }
-            else
-            {
-                write(STDOUT_FILENO, line, ft_strlen(line));
-                write(STDOUT_FILENO, ": Not found.\n", 13);
-            }
-        }
-        
-    }
-    clear_data(data);
-    free(hash_tab);
+	value = search(key, hash_tab, size);
+	if (value)
+	{
+		write(STDOUT_FILENO, value, ft_strlen(value));
+		write(STDOUT_FILENO, "\n", 1);
+	}
+	else
+	{
+		write(STDOUT_FILENO, key, ft_strlen(key));
+		write(STDOUT_FILENO, ": Not found.\n", 13);
+	}
+}
+
+int	main(void)
+{
+	char	*line;
+	int		state;
+	t_data	*data;
+	t_data	**hash_tab;
+	size_t	size;
+
+	state = STOREDATA;
+	data = NULL;
+	size = 0;
+	line = get_next_line_trim(STDIN_FILENO);
+	while (line)
+	{
+		if (state == STOREDATA && ft_strcmp(line, "") == 0)
+		{
+			hash_tab = hash_data(data, size);
+			state = RESEARCH;
+		}
+		else if (state == STOREDATA)
+			data = store_data(data, line, &size);
+		else
+			do_research(line, hash_tab, size);
+		line = get_next_line_trim(STDIN_FILENO);
+	}
+	clear_data(data);
+	free(hash_tab);
 }
