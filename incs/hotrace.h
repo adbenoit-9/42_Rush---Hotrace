@@ -6,7 +6,7 @@
 /*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:36:16 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 15:12:23 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:17:49 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,13 @@ typedef struct s_data
 }               t_data;
 
 int     ft_strcmp(const char *s1, const char *s2);
-t_data  *store_data(t_data *begin, char *line, size_t *inc);
-char    *search(char *key);
+t_data  *store_data(t_data *begin, char *line, size_t *size);
+char    *search(const char *key, t_data **data, size_t size);
+size_t  hash_index(t_data **data, size_t code, size_t size);
+size_t  hash_code(const char *key);
+t_data  **hash_data(t_data *data, size_t size);
 void	ft_lstadd_front(t_data **alst, t_data *new);
 void	clear_data(t_data *begin);
+char	*get_next_line_trim(int fd);
 
 #endif

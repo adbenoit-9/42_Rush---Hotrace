@@ -6,7 +6,7 @@
 /*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 14:32:34 by pleveque          #+#    #+#             */
-/*   Updated: 2021/12/11 15:38:41 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:14:09 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,11 @@ static t_data	*ft_lstempty()
 	return (res);
 }
 
-t_data	*store_data(t_data *begin, char *line, size_t *inc)
+t_data	*store_data(t_data *begin, char *line, size_t *size)
 {
 	t_data	*new;
-	int		line_size;
 
-	*inc += 1;
-	line_size = ft_strlen(line) - 1;
-	if (line[line_size] == '\n')
-		line[line_size] = '\0';
+	*size += 1;
 	if (begin && begin->key && !begin->value)
 	{
 		begin->value = line;
