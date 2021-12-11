@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:41:57 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 16:31:42 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:39:16 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,20 @@ int main(void)
         {
             printf("\033[31mend of storage - %zu items\033[0m\n", size);
             hash_tab = hash_data(data, size);
-            printf("\033[32mdata hashed\033[0m\n\n");
+            // printf("\033[32mdata hashed\033[0m\n\n");
             state = RESEARCH;
         }
         else if (state == STOREDATA)
            data = store_data(data, line, &size);
         else
         {
-            printf("search |%s|\n", line);
+            // printf("search |%s|\n", line);
             value = search(line, hash_tab, size);
-            printf("ok\n");
             if (value)
+            {
                 write(STDOUT_FILENO, value, ft_strlen(value));
+                write(STDOUT_FILENO, "\n", 1);
+            }
             else
             {
                 write(STDOUT_FILENO, line, ft_strlen(line));
@@ -52,4 +54,5 @@ int main(void)
         
     }
     clear_data(data);
+    free(hash_tab);
 }

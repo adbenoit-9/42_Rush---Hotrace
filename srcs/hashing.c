@@ -6,7 +6,7 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 14:41:25 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 16:14:14 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:44:37 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ size_t  hash_code(const char *key)
         p %= m;
         ++i;
     }
-    printf("\033[33mcode: %zu\033[0m\n", code);
+    // printf("\033[33mcode: %zu\033[0m\n", code);
     return (code);
 }
 
@@ -46,7 +46,7 @@ size_t  hash_index(t_data **data, size_t code, size_t size)
         index = code % size;
         
     }
-    printf("\033[34mindex: %zu\033[0m\n", index);
+    // printf("\033[34mindex: %zu\033[0m\n", index);
     return (index);
 }
 
@@ -57,7 +57,7 @@ t_data  **hash_data(t_data *data, size_t size)
     size_t  index;
     size_t  i;
 
-    hash_data = (t_data **)malloc(sizeof(t_data *));
+    hash_data = (t_data **)malloc(sizeof(t_data *) * size);
     if (!hash_data)
         return (NULL);
     i = 0;
