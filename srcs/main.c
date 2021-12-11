@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:41:57 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 16:25:35 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:31:42 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int main(void)
     data = NULL;
     hash_tab = NULL;
     size = 0;
-    while ((line = get_next_line(STDIN_FILENO)))
+    while ((line = get_next_line_trim(STDIN_FILENO)))
     {
-        if (state == STOREDATA && ft_strcmp(line, "\n") == 0)
+        if (state == STOREDATA && ft_strcmp(line, "") == 0)
         {
             printf("\033[31mend of storage - %zu items\033[0m\n", size);
             hash_tab = hash_data(data, size);

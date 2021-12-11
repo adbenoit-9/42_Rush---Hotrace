@@ -6,7 +6,7 @@
 /*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 14:32:34 by pleveque          #+#    #+#             */
-/*   Updated: 2021/12/11 16:14:09 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:29:08 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ t_data	*store_data(t_data *begin, char *line, size_t *size)
 {
 	t_data	*new;
 
-	*size += 1;
 	if (begin && begin->key && !begin->value)
 	{
 		begin->value = line;
@@ -39,6 +38,7 @@ t_data	*store_data(t_data *begin, char *line, size_t *size)
 	if (!new)
 		return (NULL);
 	new->key = line;
+	*size += 1;
 	if (begin == NULL)
 		return (new);
 	ft_lstadd_front(&begin, new);

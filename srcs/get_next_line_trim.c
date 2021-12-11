@@ -6,7 +6,7 @@
 /*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:14:53 by pleveque          #+#    #+#             */
-/*   Updated: 2021/12/11 16:17:30 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:35:10 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,10 @@ static char	*trim_enter(char *str)
 
 char	*get_next_line_trim(int fd)
 {
-	return (trim_enter(get_next_line(fd)));
+	char	*res;
+
+	res = get_next_line(fd);
+	if (res)
+		res = trim_enter(res);
+	return (res);
 }

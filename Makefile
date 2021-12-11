@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+         #
+#    By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/11 14:09:00 by adbenoit          #+#    #+#              #
-#    Updated: 2021/12/11 15:54:17 by adbenoit         ###   ########.fr        #
+#    Updated: 2021/12/11 16:34:05 by pleveque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # COMPILATION
 CC		= gcc
-CFLAGS 	= -Wall -Wextra -Werror #-fsanitize=address -g3
+CFLAGS 	= -Wall -Wextra -Werror -fsanitize=address -g3
 IFLAGS 	= -I./incs
 
 
@@ -28,6 +28,7 @@ NAME			:= hotrace
 SRC				:= main.c \
 				   utils.c \
 				   get_next_line.c \
+				   get_next_line_trim.c \
 				   get_next_line_utils.c \
 				   hashing.c \
 				   search.c \
