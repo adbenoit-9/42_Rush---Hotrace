@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 10:57:17 by pleveque          #+#    #+#             */
-/*   Updated: 2021/12/11 14:22:46 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/11 14:51:55 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "hotrace.h"
+#include "../incs/hotrace.h"
 
 size_t	ft_strlen_n(char *str)
 {

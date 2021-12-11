@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   clear_data.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/11 13:58:51 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 14:52:10 by pleveque         ###   ########.fr       */
+/*   Created: 2021/12/11 14:45:35 by pleveque          #+#    #+#             */
+/*   Updated: 2021/12/11 15:49:38 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/hotrace.h"
 
-int	ft_strcmp(const char *s1, const char *s2)
+static void	clean_data(t_data *data)
 {
-	size_t	i;
+	free(data->key);
+	free(data->value);
+	free((void *)data);
+}
 
-	i = 0;
-	while (s1[i] != '\0' || s2[i] != '\0')
+void	clear_data(t_data *begin)
+{
+	t_data	*tmp;
+
+	while (begin)
 	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
+		tmp = begin;
+		begin = begin->next;
+		clean_data(tmp);
 	}
-	return (s1[i] - s2[i]);
 }

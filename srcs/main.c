@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:41:57 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 14:20:20 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/11 15:51:15 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "hotrace.h"
+#include "../incs/hotrace.h"
 
 int main()
 {
@@ -18,21 +18,22 @@ int main()
     // char    *value;
     int     state;
     t_data  *data;
+		size_t			inc;
     
+		inc = 0;
     state = STOREDATA;
     data = NULL;
     while ((line = get_next_line(STDIN_FILENO)))
     {
         if (ft_strcmp(line, "/n") == 0)
-            state = RESEARCH;
-        // if (state == STOREDATA)
-        //    data = store_data(data, line);
+          state = RESEARCH;
+        if (state == STOREDATA)
+          data = store_data(data, line, &inc);
         // else
         // {
-            // value = search(line);
-            // write(STDOUT_FILENO, value, ft_strlen(value));
+        //     value = search(line);
+        //     write(STDOUT_FILENO, value, ft_strlen(value));
         // }
-        
     }
-    // clear_data(data);
+    clear_data(data);
 }
