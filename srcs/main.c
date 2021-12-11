@@ -6,11 +6,11 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:41:57 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 15:49:11 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/11 15:58:27 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "hotrace.h"
+#include "../incs/hotrace.h"
 
 int main(void)
 {
@@ -24,10 +24,12 @@ int main(void)
     state = STOREDATA;
     data = NULL;
     hash_tab = NULL;
+    size = 0;
     while ((line = get_next_line(STDIN_FILENO)))
     {
-        if (ft_strcmp(line, "/n") == 0)
+        if (ft_strcmp(line, "\n") == 0)
         {
+            printf("\033[31mend of storage\033[0m\n\n");
             hash_tab = hash_data(data, size);
             state = RESEARCH;
         }
@@ -35,6 +37,7 @@ int main(void)
            data = store_data(data, line, &size);
         else
         {
+            printf("search %s\n", line);
             value = search(line, hash_tab, size);
             if (value)
                 write(STDOUT_FILENO, value, ft_strlen(value));

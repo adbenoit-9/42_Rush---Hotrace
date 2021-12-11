@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   clear_data_test.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/11 13:58:51 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 14:52:10 by pleveque         ###   ########.fr       */
+/*   Created: 2021/12/11 15:13:02 by pleveque          #+#    #+#             */
+/*   Updated: 2021/12/11 15:49:31 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/hotrace.h"
+#include "../../incs/hotrace.h"
 
-int	ft_strcmp(const char *s1, const char *s2)
+int	main(void)
 {
-	size_t	i;
+	size_t	inc;
+	t_data	*data;
+	char		*line;
+	t_data	*head;
 
-	i = 0;
-	while (s1[i] != '\0' || s2[i] != '\0')
+	inc = 0;
+	data = NULL;
+	int	fd = open("srcs/tests/test.txt", O_RDONLY);
+	while ((line = get_next_line(fd)))
+		data = store_data(data, line, &inc);
+	printf("\nfd:%d, %zu", fd, inc);
+	head = data;
+	while (data)
 	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
+		printf("\n{%s}, {%s}", data->key, data->value);
+		data = data->next;
 	}
-	return (s1[i] - s2[i]);
+	clear_data(head);
 }

@@ -6,7 +6,7 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:36:16 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 15:50:01 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/11 15:54:32 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@ char    *search(const char *key, t_data **data, size_t size);
 size_t  hash_index(t_data **data, size_t code, size_t size);
 size_t  hash_code(const char *key);
 t_data  **hash_data(t_data *data, size_t size);
+void	ft_lstadd_front(t_data **alst, t_data *new);
+void	clear_data(t_data *begin);
 
 #endif
