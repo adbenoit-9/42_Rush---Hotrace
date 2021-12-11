@@ -6,7 +6,7 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 14:30:18 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 15:49:41 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:22:36 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char    *search(const char *key, t_data **data, size_t size)
     size_t  begin;
     size_t  code;
     
+    if (size == 0)
+        return (NULL);
     code = hash_code(key);
     index =  code % size;
     begin = index;
