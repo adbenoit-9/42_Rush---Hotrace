@@ -6,7 +6,7 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:36:16 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 14:23:54 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/11 15:50:01 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ typedef struct s_data
 }               t_data;
 
 int     ft_strcmp(const char *s1, const char *s2);
-t_data  *store_data(t_data *begin, char *line);
-char    *search(char *key);
+t_data  *store_data(t_data *begin, char *line, size_t *size);
+char    *search(const char *key, t_data **data, size_t size);
+size_t  hash_index(t_data **data, size_t code, size_t size);
+size_t  hash_code(const char *key);
+t_data  **hash_data(t_data *data, size_t size);
 
 #endif

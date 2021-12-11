@@ -6,7 +6,7 @@
 #    By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/11 14:09:00 by adbenoit          #+#    #+#              #
-#    Updated: 2021/12/11 14:23:22 by adbenoit         ###   ########.fr        #
+#    Updated: 2021/12/11 15:19:06 by adbenoit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,9 @@ NAME			:= hotrace
 SRC				:= main.c \
 				   utils.c \
 				   get_next_line.c \
-				   get_next_line_utils.c
+				   get_next_line_utils.c \
+				   hashing.c \
+				   search.c
 
 OBJ				:= $(SRC:%.c=$(OBJ_DIR)/%.o)
 
