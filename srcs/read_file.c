@@ -6,7 +6,7 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 13:58:35 by pleveque          #+#    #+#             */
-/*   Updated: 2021/12/12 19:14:31 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/12 20:26:21 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,7 @@ char	*read_file(int fd, size_t *key_value)
 	char	*res;
 	int		readed;
 	int		i;
-	int		reading_type;
 
-	reading_type = 1;
 	res = NULL;
 	readed = BUFFER_SIZE;
 	while (readed == BUFFER_SIZE)
@@ -64,13 +62,17 @@ char	*read_file(int fd, size_t *key_value)
 			return (NULL);
 	}
 	i = -1;
+	if (!res[0])
+		return (NULL);
 	while (res && res[++i])
 	{
 		if (res[i] == '\n')
 		{
-			*key_value += 1;
+			if (res[i + 1])
+				++(*key_value);
 			res[i] = '\0';
 		}
 	}
+	*key_value += 1;
 	return (res);
 }
