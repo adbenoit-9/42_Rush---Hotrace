@@ -6,13 +6,13 @@
 #    By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/11 14:09:00 by adbenoit          #+#    #+#              #
-#    Updated: 2021/12/12 16:02:45 by adbenoit         ###   ########.fr        #
+#    Updated: 2021/12/12 19:11:07 by adbenoit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # COMPILATION
 CC		= gcc
-CFLAGS 	= -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS 	= -Wall -Wextra -Werror #-fsanitize=address -g3
 IFLAGS 	= -I./incs
 
 
@@ -27,10 +27,12 @@ DIRS			:= $(OBJ_DIR) $(addprefix $(OBJ_DIR)/, $(SUB_DIR))
 NAME			:= hotrace
 SRC				:= main.c \
 				   utils.c \
+				   handle_data.c \
 				   hash_data.c \
 				   search_data.c \
-				   store_data.c \
-				   read_file.c
+				   insert_data.c \
+				   read_file.c \
+				   hotrace.c
 
 OBJ				:= $(SRC:%.c=$(OBJ_DIR)/%.o)
 

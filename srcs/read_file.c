@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 13:58:35 by pleveque          #+#    #+#             */
-/*   Updated: 2021/12/12 15:06:01 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/12/12 19:14:31 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ char	*read_file(int fd, size_t *key_value)
 	char	buffer[BUFFER_SIZE];
 	char	*res;
 	int		readed;
+	int		i;
 	int		reading_type;
 
 	reading_type = 1;
@@ -59,17 +60,17 @@ char	*read_file(int fd, size_t *key_value)
 	while (readed == BUFFER_SIZE)
 	{
 		readed = read(fd, buffer, BUFFER_SIZE);
-		ft_realloc_l_cat(buffer, readed, &res, ft_len(res));
+		if (ft_realloc_l_cat(buffer, readed, &res, ft_len(res)) == -1)
+			return (NULL);
 	}
-	int i = 0;
-	while (res[i])
+	i = -1;
+	while (res && res[++i])
 	{
 		if (res[i] == '\n')
 		{
 			*key_value += 1;
 			res[i] = '\0';
 		}
-		i++;
 	}
 	return (res);
 }
