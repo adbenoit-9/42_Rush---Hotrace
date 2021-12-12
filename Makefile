@@ -6,7 +6,7 @@
 #    By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/11 14:09:00 by adbenoit          #+#    #+#              #
-#    Updated: 2021/12/12 20:37:01 by adbenoit         ###   ########.fr        #
+#    Updated: 2021/12/12 22:33:54 by adbenoit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ SRC				:= main.c \
 				   search_data.c \
 				   insert_data.c \
 				   read_file.c \
-				   hotrace.c
+				   hotrace.c \
+				   parser.c
 
 OBJ				:= $(SRC:%.c=$(OBJ_DIR)/%.o)
 

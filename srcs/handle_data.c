@@ -6,7 +6,7 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 14:45:35 by pleveque          #+#    #+#             */
-/*   Updated: 2021/12/12 19:09:29 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/12 22:27:27 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	clear_datatab(t_data **begin, size_t size)
 	size_t	i;
 
 	i = 0;
-	while (i < size)
+	while (begin && i < size)
 	{
 		clear_data(begin[i]);
 		++i;

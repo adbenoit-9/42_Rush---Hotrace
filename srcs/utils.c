@@ -6,7 +6,7 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:58:51 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/12 19:14:54 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/12 22:28:23 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,16 @@ bool	ft_perror(const char *error, t_data *data)
 	write(STDERR_FILENO, error, ft_strlen(error));
 	write(STDERR_FILENO, "\n", 1);
 	return (1);
+}
+
+void	free_tab(char **ptr, size_t size)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < size)
+	{
+		free(ptr[i]);
+		++i;
+	}
 }
