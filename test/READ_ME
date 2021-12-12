@@ -1,0 +1,21 @@
+Check 1: check de base
+Check 2: Key of 2147483648 char
+Check 3: Value of 2147483648 char
+Check 4: Value of UINT_MAX char
+Check 5: Value of 100000 char
+Check 6: insert 700 value + 4 search
+Check 7: insert 700 value
+Check 8: insert 500 value
+
+Check 9: insert 500 value + 100 search
+check 10: inset 10 000 value
+check 11: pas de dictionnaire
+check 12: insert 100 000 value
+check 13: insert 10 000 value + search 500
+check 14: insert 50 000 value + search 10 000 + 10 000 not found
+check 15: insert 50 000 value + search 20 000
+check 16: insert 50 000
+Check 17: insert 100 000 + search 100 000
+Check 18: insert 100 000 + search 200 000
+Check 19: insert 100 000 + search 100 000 not found
+Check 20: insert 1 000 000 + search 1 000 000
