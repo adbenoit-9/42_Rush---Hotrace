@@ -6,7 +6,7 @@
 /*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 14:32:34 by pleveque          #+#    #+#             */
-/*   Updated: 2021/12/11 20:03:57 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/12/12 14:53:17 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static t_data	*ft_lstempty(void)
 	return (res);
 }
 
-t_data	*store_data(t_data *last, char *line, size_t *size)
+t_data	*store_data(t_data *last, char *line)
 {
 	t_data	*new;
 
@@ -38,7 +38,6 @@ t_data	*store_data(t_data *last, char *line, size_t *size)
 	if (!new)
 		return (NULL);
 	new->key = line;
-	++(*size);
 	if (last)
 		last->next = new;
 	return (new);

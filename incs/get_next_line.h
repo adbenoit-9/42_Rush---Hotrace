@@ -6,7 +6,7 @@
 /*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:21:03 by pleveque          #+#    #+#             */
-/*   Updated: 2021/12/01 11:35:26 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/12/12 15:21:31 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 100000
 # endif
 
 # include	<stdio.h>

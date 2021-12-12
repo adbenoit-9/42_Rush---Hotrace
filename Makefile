@@ -6,7 +6,7 @@
 #    By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/11 14:09:00 by adbenoit          #+#    #+#              #
-#    Updated: 2021/12/11 20:16:08 by pleveque         ###   ########.fr        #
+#    Updated: 2021/12/12 14:01:45 by pleveque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ SRC				:= main.c \
 				   hash_data.c \
 				   search_data.c \
 				   store_data.c \
-				   clear_data.c
+				   clear_data.c \
+					 read_file.c
 
 OBJ				:= $(SRC:%.c=$(OBJ_DIR)/%.o)
 
