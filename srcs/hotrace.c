@@ -6,7 +6,7 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 16:51:59 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/12 22:02:07 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/12 22:20:39 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_data	*hotrace(char *line, t_data *last, t_hashtab hash_tab)
 {
 	char	*value;
 	size_t	len;
-	
+
 	value = NULL;
 	if (hash_tab.status == 0)
 		last = insert_data(last, line);
