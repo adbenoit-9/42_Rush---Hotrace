@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   search_data.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 14:30:18 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/11 20:27:13 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/12/12 15:42:12 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ char	*search(const char *key, t_data **data, size_t size)
 	}
 	if (!it)
 		return (NULL);
+	printf("\033[33mkey:\t%s\nvalue:\t%s\033[0m\n", data[index]->key, data[index]->value);
 	return (data[index]->value);
 }
