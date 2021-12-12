@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 13:58:35 by pleveque          #+#    #+#             */
-/*   Updated: 2021/12/12 20:26:21 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/12 22:26:42 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,20 @@ static int	ft_len(char *str)
 	return (ft_strlen(str));
 }
 
+static char	*iterate_file(char *res, int *i, size_t *key_value)
+{
+	while (res && res[++*i])
+	{
+		if (res[*i] == '\n')
+		{
+			if (res[*i + 1])
+				++(*key_value);
+			res[*i] = '\0';
+		}
+	}
+	return (res);
+}
+
 char	*read_file(int fd, size_t *key_value)
 {
 	char	buffer[BUFFER_SIZE];
@@ -64,15 +78,7 @@ char	*read_file(int fd, size_t *key_value)
 	i = -1;
 	if (!res[0])
 		return (NULL);
-	while (res && res[++i])
-	{
-		if (res[i] == '\n')
-		{
-			if (res[i + 1])
-				++(*key_value);
-			res[i] = '\0';
-		}
-	}
+	res = iterate_file(res, &i, key_value);
 	*key_value += 1;
 	return (res);
 }
