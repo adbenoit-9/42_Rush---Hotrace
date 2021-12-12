@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:41:57 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/12 15:20:05 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/12/12 16:07:28 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static void	do_research(const char *key, t_data **hash_tab, size_t size)
 
 int	main(void)
 {
-	//char	*line;
 	t_data	*last;
 	t_data	*begin;
 	t_data	**hash_tab;
@@ -69,7 +68,7 @@ int	main(void)
 		free(begin_res);
 		return (0);
 	}
-	size = i /2;
+	size = i / 2;
 	hash_tab = hash_data(begin, size);
 	++res;
 	++i;
@@ -79,12 +78,6 @@ int	main(void)
 		res += ft_strlen(res) + 1;
 		++i;
 	}
-	i = 0;
-	while (i < size)
-	{
-		clear_data(hash_tab[i]);
-		++i;
-	}
-	free(hash_tab);
+	clear_datatab(hash_tab, size);
 	free(begin_res);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:58:51 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/12 13:43:07 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/12/12 16:06:17 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,22 +52,37 @@ void	ft_lstadd_back(t_data **alst, t_data *new)
 		*alst = new;
 }
 
-static char	*trim_enter(char *str)
+void	clear_data(t_data *begin)
 {
-	int	size;
+	t_data	*tmp;
 
-	size = ft_strlen(str) - 1;
-	if (str[size] == '\n')
-		str[size] = '\0';
-	return (str);
+	while (begin)
+	{
+		tmp = begin;
+		begin = begin->next;
+		free(tmp);
+	}
 }
 
-char	*get_next_line_trim(int fd)
+void	clear_datatab(t_data **begin, size_t size)
 {
-	char	*res;
+	size_t	i;
 
-	res = get_next_line(fd);
-	if (res)
-		res = trim_enter(res);
-	return (res);
+	i = 0;
+	while (i < size)
+	{
+		clear_data(begin[i]);
+		++i;
+	}
+	free(begin);
+}
+
+size_t	ft_strlen(const char *str)
+{
+	int	i;
+	
+	i = 0;
+	while (str[i])
+		++i;
+	return (i);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hotrace.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:36:16 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/12 15:01:46 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/12/12 16:06:40 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
-# include "get_next_line.h"
 
 # define STOREDATA 0
 # define RESEARCH 1
+# define BUFFER_SIZE 100000
 
 typedef struct s_data
 {
@@ -32,14 +32,15 @@ t_data	*store_data(t_data *last, char *line);
 char	*search(const char *key, t_data **data, size_t size);
 size_t	hash_code(const char *key);
 t_data	**hash_data(t_data *data, size_t size);
-void	clear_data(t_data *begin);
 
 /* UTILS */
+size_t	ft_strlen(const char *str);
 int		ft_strcmp(const char *s1, const char *s2);
 void	ft_lstadd_front(t_data **alst, t_data *new);
-char	*get_next_line_trim(int fd);
 void	ft_lstadd_back(t_data **alst, t_data *new);
 t_data	*ft_lstlast(t_data *lst);
 char	*read_file(int fd, size_t *key_value);
+void	clear_data(t_data *begin);
+void	clear_datatab(t_data **begin, size_t size);
 
 #endif
