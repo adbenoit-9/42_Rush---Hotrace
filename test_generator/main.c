@@ -43,7 +43,8 @@ int main (int ac, char **av) {
 	write(fd, "\n", 1);
 	for( i = 0 ; i < n ; i++ )
 	{
-		line = ft_itoa(key[rand() % n / 2]);
+		// line = ft_itoa(key[rand() % n / 2]);
+		line = ft_itoa(rand());
 		write(fd, line, ft_strlen(line));
 		free(line);
 		write(fd, "\n", 1);

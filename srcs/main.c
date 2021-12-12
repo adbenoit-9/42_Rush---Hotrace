@@ -6,7 +6,7 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:41:57 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/12 16:07:28 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/12 16:37:20 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,17 @@
 static void	do_research(const char *key, t_data **hash_tab, size_t size)
 {
 	char	*value;
+	size_t	len;
 
-	if (!hash_tab)
-	{
-		write(STDOUT_FILENO, key, ft_strlen(key));
-		write(STDOUT_FILENO, ": Not found.\n", 13);
-		return ;
-	}
-	value = search(key, hash_tab, size);
+	value = NULL;
+	if (hash_tab)
+		value = search(key, hash_tab, size);
 	if (value)
 	{
-		write(STDOUT_FILENO, value, ft_strlen(value));
-		write(STDOUT_FILENO, "\n", 1);
+		len = ft_strlen(value);
+		value[len - 1] = '\n';
+		write(STDOUT_FILENO, value, len);
+		value[len - 1] = 0;
 	}
 	else
 	{
@@ -44,16 +43,16 @@ int	main(void)
 	size_t	i;
 	size_t	size;
 	char	*res;
-	size_t end_file;
+	size_t	end;
 
 	last = NULL;
 	begin = NULL;
 	hash_tab = NULL;
 	i = 0;
-	end_file = 0;
-	res = read_file(STDIN_FILENO, &end_file);
+	end = 0;
+	res = read_file(STDIN_FILENO, &end);
 	char	*begin_res = res;
-	while (i < end_file && res[0])
+	while (i < end && res[0])
 	{
 		last = store_data(last, res);
 		if (i == 1)
@@ -62,8 +61,8 @@ int	main(void)
 		++i;
 	}
 	if (i % 2)
-	{
-		write(STDIN_FILENO, "you cant have empty value\n", 27);
+		// strerror
+		write(STDERR_FILENO, "you cant have empty value\n", 27);
 		clear_data(begin);
 		free(begin_res);
 		return (0);
@@ -72,7 +71,7 @@ int	main(void)
 	hash_tab = hash_data(begin, size);
 	++res;
 	++i;
-	while (i < end_file)
+	while (i < end)
 	{
 		do_research(res, hash_tab, size);
 		res += ft_strlen(res) + 1;
