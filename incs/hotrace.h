@@ -6,7 +6,7 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:36:16 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/12 21:57:18 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/12 22:30:15 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ char	*search(const char *key, t_data **data, size_t size);
 size_t	hash_code(const char *key);
 t_data	**hash_data(t_data *data, size_t size);
 t_data	*hotrace(char *line, t_data *last, t_hashtab hash_tab);
+bool	parse_input(char *input, t_data **last, size_t n, t_hashtab *hash_tab);
 
 /* UTILS */
 int		ft_strcmp(const char *s1, const char *s2);
@@ -54,5 +55,6 @@ void	clear_data(t_data *begin);
 void	clear_datatab(t_data **begin, size_t size);
 size_t	ft_strlen(const char *str);
 bool	ft_perror(const char *error, t_data *data);
+void	free_tab(char **ptr, size_t size);
 
 #endif

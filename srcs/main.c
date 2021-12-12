@@ -6,23 +6,11 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:41:57 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/12 22:20:16 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/12 22:33:43 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hotrace.h"
-
-void	free_tab(char **ptr, size_t size)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < size)
-	{
-		free(ptr[i]);
-		++i;
-	}
-}
 
 t_hashtab	init_hastab(void)
 {
@@ -35,45 +23,10 @@ t_hashtab	init_hastab(void)
 	return (hash_tab);
 }
 
-bool	handle_status(t_hashtab *hash_tab, size_t i)
+void	clean(char **ptr, t_hashtab hash_tab, size_t size)
 {
-	++hash_tab->status;
-	if (i % 2)
-		return (ft_perror(strerror(EINVAL), hash_tab->data));
-	hash_tab->size /= 2;
-	hash_tab->ptr = hash_data(hash_tab->data, hash_tab->size);
-	if (!hash_tab->ptr)
-		return (ft_perror(strerror(ENOMEM), hash_tab->data));
-	return (0);
-}
-
-bool	parse_input(char *input, t_data **last, size_t n, t_hashtab *hash_tab)
-{
-	char	*line;
-	size_t	i;
-
-	line = input;
-	i = -1;
-	while (++i < n)
-	{
-		if (!line[0] && hash_tab->status == 0)
-		{
-			if (handle_status(hash_tab, i))
-				return (1);
-		}
-		else
-		{
-			if (hash_tab->status == 0)
-				++hash_tab->size;
-			*last = hotrace(line, *last, *hash_tab);
-			if (hash_tab->status == 0 && !(*last))
-				return (ft_perror(strerror(ENOMEM), hash_tab->data));
-			if (!hash_tab->data)
-				hash_tab->data = *last;
-		}
-		line += ft_strlen(line) + 1;
-	}
-	return (0);
+	free_tab(ptr, size);
+	clear_datatab(hash_tab.ptr, hash_tab.size);
 }
 
 int	main(void)
@@ -91,7 +44,8 @@ int	main(void)
 	input = read_file(STDIN_FILENO, &nb[1]);
 	while (input)
 	{
-		ptr[nb[0]++] = input;
+		if (nb[0] < 10000)
+			ptr[nb[0]++] = input;
 		if (parse_input(input, &last, nb[1], &hash_tab))
 		{
 			free_tab(ptr, nb[0]);
@@ -100,7 +54,6 @@ int	main(void)
 		nb[1] = 0;
 		input = read_file(STDIN_FILENO, &nb[1]);
 	}
-	free_tab(ptr, nb[0]);
-	clear_datatab(hash_tab.ptr, hash_tab.size);
+	clean(ptr, hash_tab, nb[0]);
 	return (0);
 }
