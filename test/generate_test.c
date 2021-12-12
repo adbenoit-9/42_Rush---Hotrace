@@ -11,7 +11,7 @@ int	main(int ac, char **av)
 		for (int i = 0;i <nb_key; i++ )
 			printf("key_%d\nvalue_%d\n",i,i);
 		printf("\n");
-		for (int i = 0;i <nb_search * 2; i++ )
+		for (int i = 0;i <nb_search; i++ )
 			printf("key_%d\n", rand() % nb_key);
 		// for (int i = nb_key; i < nb_key + nb_search; i++)
 		// 	printf("key_%d\n", i);
