@@ -6,7 +6,7 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:36:16 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/12 22:30:15 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/12 22:58:52 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_data	*insert_data(t_data *last, char *line);
 char	*search(const char *key, t_data **data, size_t size);
 size_t	hash_code(const char *key);
 t_data	**hash_data(t_data *data, size_t size);
-t_data	*hotrace(char *line, t_data *last, t_hashtab hash_tab);
+t_data	*hotrace(char *line, t_data *last, t_hashtab *hash_tab);
 bool	parse_input(char *input, t_data **last, size_t n, t_hashtab *hash_tab);
 
 /* UTILS */

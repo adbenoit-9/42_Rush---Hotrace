@@ -6,16 +6,16 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 22:29:48 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/12 22:34:14 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/12 22:59:06 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hotrace.h"
 
-static bool	handle_status(t_hashtab *hash_tab, size_t i)
+static bool	handle_status(t_hashtab *hash_tab)
 {
 	++hash_tab->status;
-	if (i % 2)
+	if (hash_tab->size % 2)
 		return (ft_perror(strerror(EINVAL), hash_tab->data));
 	hash_tab->size /= 2;
 	hash_tab->ptr = hash_data(hash_tab->data, hash_tab->size);
@@ -35,14 +35,14 @@ bool	parse_input(char *input, t_data **last, size_t n, t_hashtab *hash_tab)
 	{
 		if (!line[0] && hash_tab->status == 0)
 		{
-			if (handle_status(hash_tab, i))
+			if (handle_status(hash_tab))
 				return (1);
 		}
 		else
 		{
 			if (hash_tab->status == 0)
 				++hash_tab->size;
-			*last = hotrace(line, *last, *hash_tab);
+			*last = hotrace(line, *last, hash_tab);
 			if (hash_tab->status == 0 && !(*last))
 				return (ft_perror(strerror(ENOMEM), hash_tab->data));
 			if (!hash_tab->data)

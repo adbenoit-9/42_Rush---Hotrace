@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 13:58:35 by pleveque          #+#    #+#             */
-/*   Updated: 2021/12/12 22:26:42 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/12/12 23:02:15 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,10 @@ char	*read_file(int fd, size_t *key_value)
 	}
 	i = -1;
 	if (!res[0])
+	{
+		free(res);
 		return (NULL);
+	}
 	res = iterate_file(res, &i, key_value);
 	*key_value += 1;
 	return (res);
