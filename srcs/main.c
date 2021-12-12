@@ -6,13 +6,13 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:41:57 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/12/12 23:03:10 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/12/12 23:06:14 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hotrace.h"
 
-t_hashtab	init_hastab(void)
+static t_hashtab	init_hastab(void)
 {
 	t_hashtab	hash_tab;
 
@@ -23,7 +23,7 @@ t_hashtab	init_hastab(void)
 	return (hash_tab);
 }
 
-void	clean(char **ptr, t_hashtab hash_tab, size_t size)
+static void	clean(char **ptr, t_hashtab hash_tab, size_t size)
 {
 	free_tab(ptr, size);
 	clear_datatab(hash_tab.ptr, hash_tab.size);
